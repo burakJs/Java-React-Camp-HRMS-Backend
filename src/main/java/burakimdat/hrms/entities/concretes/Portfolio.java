@@ -2,8 +2,10 @@ package burakimdat.hrms.entities.concretes;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,20 +28,20 @@ public class Portfolio {
 	@Column(name = "id")
 	private int id;
 
-	@OneToMany(mappedBy = "portfolio")
+	@OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Education> educations;
 
-	@OneToMany(mappedBy = "portfolio")
+	@OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Experience> experiences;
 
-	@OneToMany(mappedBy = "portfolio")
+	@OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Language> languages;
 
 	@Column(name = "img_url")
 	private String imageUrl;
 
 	@Column(name = "skills")
-	private String[] skills;
+	private Character[] skills;
 
 	@Column(name = "intro")
 	private String intro;

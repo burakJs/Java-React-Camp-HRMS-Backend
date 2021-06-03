@@ -32,6 +32,7 @@ public class PortfoliosController {
 
 	@PostMapping("/add")
 	DataResult<Portfolio> add(@RequestBody Portfolio portfolio) {
+		System.out.println(portfolio);
 		return this.portfolioService.add(portfolio);
 	}
 }
