@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import burakimdat.hrms.business.abstracts.PortfolioService;
 import burakimdat.hrms.core.utilities.results.DataResult;
@@ -27,6 +28,9 @@ public class PortfoliosController {
 
 	@GetMapping("/getAll")
 	DataResult<List<Portfolio>> getAll() {
+		// CloudinaryAdapter adapter = new CloudinaryAdapter();
+		// File file = new File("/Users/burakbey/Desktop/flutter.png");
+		// adapter.imageUpload(file);
 		return this.portfolioService.getAll();
 	}
 
@@ -34,5 +38,10 @@ public class PortfoliosController {
 	DataResult<Portfolio> add(@RequestBody Portfolio portfolio) {
 		System.out.println(portfolio);
 		return this.portfolioService.add(portfolio);
+	}
+
+	@PostMapping("/setImage")
+	DataResult<?> add(@RequestBody MultipartFile file, int id) {
+		return this.portfolioService.setImage(file, id);
 	}
 }

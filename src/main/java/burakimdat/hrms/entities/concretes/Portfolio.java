@@ -37,11 +37,11 @@ public class Portfolio {
 	@OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Language> languages;
 
+	@OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Skill> skills;
+
 	@Column(name = "img_url")
 	private String imageUrl;
-
-	@Column(name = "skills")
-	private Character[] skills;
 
 	@Column(name = "intro")
 	private String intro;
