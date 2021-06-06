@@ -31,6 +31,7 @@ public class JobSeekerManager implements JobSeekerService {
 	@Override
 	public DataResult<JobSeeker> add(JobSeeker jobSeeker) {
 		// TODO: Maile dönüşücek => Sonraki java dersinden sonra...
+
 		if (!this.jobSeekerDao.existsJobSeekerByName(jobSeeker.getName())) {
 			this.jobSeekerDao.save(jobSeeker);
 			return new SuccessDataResult<JobSeeker>(jobSeeker, "Başarıyla kaydedildi...");
