@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,12 +26,18 @@ public class Employer {
 	@Column(name = "employers_id")
 	private int employersId;
 
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
+	@NotNull
+	@NotBlank
 	@Column(name = "company_name")
 	private String companyName;
 
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "web_site")
 	private String webSite;
 
+	@NotNull
+	@NotBlank
 	@Column(name = "phone_number")
 	private String phoneNumber;
 

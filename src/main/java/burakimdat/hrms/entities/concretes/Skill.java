@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,10 +31,13 @@ public class Skill {
 	@Column(name = "skill_id")
 	private int id;
 
+	@NotNull
+	@NotBlank
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "skill_name")
 	private String skillName;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@JoinColumn(name = "portfolio_id")
 	@JsonIgnore
 	private Portfolio portfolio;

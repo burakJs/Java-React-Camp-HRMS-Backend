@@ -2,7 +2,10 @@ package burakimdat.hrms.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import burakimdat.hrms.business.abstracts.JobAdService;
+import burakimdat.hrms.business.validators.ValidationService;
 import burakimdat.hrms.core.utilities.results.DataResult;
 import burakimdat.hrms.entities.concretes.JobAd;
 
 @RestController
 @RequestMapping("/api/jobAds")
-public class JobAdController {
+public class JobAdController extends ValidationService {
 
 	private JobAdService jobAdService;
 
@@ -27,8 +31,8 @@ public class JobAdController {
 	}
 
 	@PostMapping("/add")
-	public DataResult<JobAd> add(@RequestBody JobAd jobAd) {
-		return this.jobAdService.add(jobAd);
+	public ResponseEntity<?> add(@Valid @RequestBody JobAd jobAd) {
+		return ResponseEntity.ok(this.jobAdService.add(jobAd));
 	}
 
 	@GetMapping("/getByIsActive")

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,12 +32,15 @@ public class JobAd {
 	@JoinColumn(name = "job_pos_id")
 	private JobPosition jobPosition;
 
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "job_ad_company_name")
 	private String companyName;
 
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "job_ad_desc")
 	private String description;
 
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "job_ad_city")
 	private String city;
 

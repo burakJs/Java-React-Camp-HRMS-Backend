@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -30,6 +33,9 @@ public class JobPosition {
 	@Column(name = "job_pos_id")
 	private int id;
 
+	@NotNull
+	@NotBlank
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "name", nullable = false)
 	private String jobPositionName;
 

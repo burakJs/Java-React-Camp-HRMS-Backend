@@ -30,6 +30,7 @@ public class LanguageManager implements LanguageService {
 
 	@Override
 	public DataResult<Language> add(Language language) {
+
 		if (!this.languageDao.existsLanguageByLanguageName(language.getLanguageName())) {
 			this.languageDao.save(language);
 			return new SuccessDataResult<Language>(language, "Başarıyla Kaydedildi...");

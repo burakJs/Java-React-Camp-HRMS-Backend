@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -34,16 +37,21 @@ public class Experience {
 	@JoinColumn(name = "position_id")
 	private JobPosition jobPosition;
 
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
+	@NotNull
+	@NotBlank
 	@Column(name = "workplace_name")
 	private String workPlaceName;
 
+	@NotNull
 	@Column(name = "entry_date")
 	private Date entryDate;
 
+	@NotNull
 	@Column(name = "quit_date")
 	private Date quitDate;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@JoinColumn(name = "portfolio_id")
 	@JsonIgnore
 	private Portfolio portfolio;

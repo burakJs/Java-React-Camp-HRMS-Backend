@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,15 +28,25 @@ public class JobSeeker {
 	@Column(name = "job_seeker_id")
 	private int jobSeekerId;
 
+	@NotNull
+	@NotBlank
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "name")
 	private String name;
 
+	@NotNull
+	@NotBlank
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "surname")
 	private String surname;
 
+	@NotNull
+	@NotBlank
+	@Size(max = 11, message = "Gireceğiniz değer 11 karakterden az olmalı")
 	@Column(name = "identity_number")
 	private String identityNumber;
 
+	@NotNull
 	@Column(name = "birthday")
 	private Date birthday;
 

@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,13 +31,16 @@ public class Language {
 	@Column(name = "language_id")
 	private int id;
 
+	@NotNull
+	@NotBlank
+	@Size(max = 255, message = "En fazla 255 karakter giriniz")
 	@Column(name = "language_name")
 	private String languageName;
 
 	@Column(name = "language_level")
-	private String languageLevel;
+	private int languageLevel;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@JoinColumn(name = "portfolio_id")
 	@JsonIgnore
 	private Portfolio portfolio;

@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,9 +31,11 @@ public class Education {
 	@Column(name = "education_id")
 	private int id;
 
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "school_name")
 	private String schoolName;
 
+	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "department_name")
 	private String departmentName;
 
@@ -42,7 +45,7 @@ public class Education {
 	@Column(name = "graduation_date")
 	private Date graduationDate;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@JoinColumn(name = "portfolio_id")
 	@JsonIgnore
 	private Portfolio portfolio;
