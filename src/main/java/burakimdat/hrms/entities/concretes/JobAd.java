@@ -40,9 +40,9 @@ public class JobAd {
 	@Column(name = "job_ad_desc")
 	private String description;
 
-	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
-	@Column(name = "job_ad_city")
-	private String city;
+	@ManyToOne
+	@JoinColumn(name = "job_city_id")
+	private City city;
 
 	@Column(name = "job_ad_count")
 	private int count;
