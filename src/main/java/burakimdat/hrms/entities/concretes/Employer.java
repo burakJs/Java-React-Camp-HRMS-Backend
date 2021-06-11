@@ -10,6 +10,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -42,8 +44,9 @@ public class Employer {
 	private String phoneNumber;
 
 	@Column(name = "email_verify")
-	private boolean emailVerify;
+	private boolean emailVerify = false;
 
 	@Column(name = "hrms_verify")
-	private boolean hrmsVerify;
+	@JsonIgnore
+	private boolean hrmsVerify = false;
 }

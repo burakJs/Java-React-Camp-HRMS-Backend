@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -31,10 +33,14 @@ public class Education {
 	@Column(name = "education_id")
 	private int id;
 
+	@NotNull(message = "Lütfen geçerli bir okul ismi giriniz")
+	@NotBlank(message = "Okul ismi boş olamaz!")
 	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "school_name")
 	private String schoolName;
 
+	@NotNull(message = "Lütfen geçerli bir bölüm ismi giriniz")
+	@NotBlank(message = "Bölüm ismi boş olamaz!")
 	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
 	@Column(name = "department_name")
 	private String departmentName;
@@ -45,8 +51,11 @@ public class Education {
 	@Column(name = "graduation_date")
 	private Date graduationDate;
 
+	@Column(name = "portfolio_id")
+	private int portfolioId;
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = true)
-	@JoinColumn(name = "portfolio_id")
+	@JoinColumn(name = "portfolio_id", insertable = false, updatable = false)
 	@JsonIgnore
 	private Portfolio portfolio;
 }

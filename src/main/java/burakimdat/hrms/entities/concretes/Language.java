@@ -40,8 +40,11 @@ public class Language {
 	@Column(name = "language_level")
 	private int languageLevel;
 
+	@Column(name = "portfolio_id")
+	private int portfolioId;
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = true)
-	@JoinColumn(name = "portfolio_id")
+	@JoinColumn(name = "portfolio_id", insertable = false, updatable = false)
 	@JsonIgnore
 	private Portfolio portfolio;
 }

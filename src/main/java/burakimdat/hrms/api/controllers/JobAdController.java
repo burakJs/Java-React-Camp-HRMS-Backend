@@ -54,4 +54,29 @@ public class JobAdController extends ValidationService {
 	public DataResult<Integer> setIsActiveById(@RequestParam int id) {
 		return this.jobAdService.setIsActiveById(id, false);
 	}
+
+	@GetMapping("/getByJobPosId")
+	public DataResult<List<JobAd>> getByJobPos_JobPosId(@RequestParam int jobPosId) {
+		return this.jobAdService.getByJobPos_JopPosId(jobPosId);
+	}
+
+	@GetMapping("/getByCityId")
+	DataResult<List<JobAd>> getByCity_Id(int cityId) {
+		return this.jobAdService.getByCity_Id(cityId);
+	}
+
+	@GetMapping("/findBySalaryMaxLessThanEqual")
+	public DataResult<List<JobAd>> findBySalaryMaxLessThanEqual(int maxSalary) {
+		return this.jobAdService.findBySalaryMaxLessThanEqual(maxSalary);
+	}
+
+	@GetMapping("/findBySalaryMinGreaterThanEqual")
+	public DataResult<List<JobAd>> findBySalaryMinGreaterThanEqual(int minSalary) {
+		return this.jobAdService.findBySalaryMinGreaterThanEqual(minSalary);
+	}
+
+	@GetMapping("/findBySalaryMinGreaterThanEqualAndSalaryMaxLessThanEqual")
+	DataResult<List<JobAd>> findBySalaryMinGreaterThanEqualAndSalaryMaxLessThanEqual(int minSalary, int maxSalary) {
+		return this.jobAdService.findBySalaryMinGreaterThanEqualAndSalaryMaxLessThanEqual(minSalary, maxSalary);
+	}
 }

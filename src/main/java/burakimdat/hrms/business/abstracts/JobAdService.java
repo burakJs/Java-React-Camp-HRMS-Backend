@@ -16,4 +16,14 @@ public interface JobAdService {
 
 	DataResult<Integer> setIsActiveById(int id, boolean isActive);
 
+	DataResult<List<JobAd>> getByJobPos_JopPosId(int jobPosId);
+
+	DataResult<List<JobAd>> getByCity_Id(int cityId);
+
+	DataResult<List<JobAd>> findBySalaryMaxLessThanEqual(int maxSalary);
+
+	DataResult<List<JobAd>> findBySalaryMinGreaterThanEqual(int minSalary);
+
+	DataResult<List<JobAd>> findBySalaryMinGreaterThanEqualAndSalaryMaxLessThanEqual(int minSalary, int maxSalary);
+
 }

@@ -55,7 +55,7 @@ public class JobSeeker {
 	private Date birthday;
 
 	@Column(name = "email_verify")
-	private boolean emailVerify;
+	private boolean emailVerify = false;
 
 	@OneToMany(mappedBy = "jobSeeker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Portfolio> portfolios;

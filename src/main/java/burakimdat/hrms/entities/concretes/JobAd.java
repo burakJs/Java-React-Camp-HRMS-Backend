@@ -10,7 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -47,9 +50,11 @@ public class JobAd {
 	@Column(name = "job_ad_count")
 	private int count;
 
+	@NotNull
 	@Column(name = "job_ad_salary_min")
 	private int salaryMin;
 
+	@NotNull
 	@Column(name = "job_ad_salary_max")
 	private int salaryMax;
 
@@ -58,4 +63,8 @@ public class JobAd {
 
 	@Column(name = "job_ad_last_date")
 	private Date lastDate;
+
+	@Column(name = "hrms_verify")
+	@JsonIgnore
+	private boolean hrmsVerify = false;
 }

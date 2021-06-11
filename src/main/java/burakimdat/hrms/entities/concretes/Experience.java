@@ -51,8 +51,11 @@ public class Experience {
 	@Column(name = "quit_date")
 	private Date quitDate;
 
+	@Column(name = "portfolio_id")
+	private int portfolioId;
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = true)
-	@JoinColumn(name = "portfolio_id")
+	@JoinColumn(name = "portfolio_id", insertable = false, updatable = false)
 	@JsonIgnore
 	private Portfolio portfolio;
 

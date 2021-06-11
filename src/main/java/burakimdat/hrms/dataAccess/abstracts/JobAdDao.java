@@ -19,4 +19,14 @@ public interface JobAdDao extends JpaRepository<JobAd, Integer> {
 	@Transactional
 	@Query("UPDATE JobAd j SET j.isActive = :isActive WHERE j.id = :jobAdId")
 	int updateJobAd(@Param("jobAdId") int id, @Param("isActive") boolean isActive);
+
+	List<JobAd> getByJobPosition_Id(int jobPosId);
+
+	List<JobAd> getByCity_Id(int cityId);
+
+	List<JobAd> findBySalaryMaxLessThanEqual(int maxSalary);
+
+	List<JobAd> findBySalaryMinGreaterThanEqual(int minSalary);
+
+	List<JobAd> findBySalaryMinGreaterThanEqualAndSalaryMaxLessThanEqual(int minSalary, int maxSalary);
 }

@@ -53,8 +53,11 @@ public class Portfolio {
 	@Column(name = "intro")
 	private String intro;
 
+	@Column(name = "job_seeker_id")
+	private String jobSeekerId;
+
 	@ManyToOne
-	@JoinColumn(name = "job_seeker_id")
+	@JoinColumn(name = "job_seeker_id", insertable = false, updatable = false)
 	@JsonIgnore
 	private JobSeeker jobSeeker;
 }

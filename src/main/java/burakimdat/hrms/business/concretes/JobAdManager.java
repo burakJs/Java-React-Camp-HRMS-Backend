@@ -55,4 +55,31 @@ public class JobAdManager implements JobAdService {
 				"Başarıyla pasif hale getirildi");
 	}
 
+	@Override
+	public DataResult<List<JobAd>> getByJobPos_JopPosId(int jobPosId) {
+		return new SuccessDataResult<List<JobAd>>(this.JobAdDao.getByJobPosition_Id(jobPosId));
+	}
+
+	@Override
+	public DataResult<List<JobAd>> getByCity_Id(int cityId) {
+		return new SuccessDataResult<List<JobAd>>(this.JobAdDao.getByCity_Id(cityId));
+	}
+
+	@Override
+	public DataResult<List<JobAd>> findBySalaryMaxLessThanEqual(int maxSalary) {
+		return new SuccessDataResult<List<JobAd>>(this.JobAdDao.findBySalaryMaxLessThanEqual(maxSalary));
+	}
+
+	@Override
+	public DataResult<List<JobAd>> findBySalaryMinGreaterThanEqual(int maxSalary) {
+		return new SuccessDataResult<List<JobAd>>(this.JobAdDao.findBySalaryMinGreaterThanEqual(maxSalary));
+	}
+
+	@Override
+	public DataResult<List<JobAd>> findBySalaryMinGreaterThanEqualAndSalaryMaxLessThanEqual(int minSalary,
+			int maxSalary) {
+		return new SuccessDataResult<List<JobAd>>(
+				this.JobAdDao.findBySalaryMinGreaterThanEqualAndSalaryMaxLessThanEqual(minSalary, maxSalary));
+	}
+
 }
