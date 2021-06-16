@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,8 @@ import burakimdat.hrms.core.utilities.results.Result;
 import burakimdat.hrms.entities.concretes.Education;
 
 @RestController
-@RequestMapping("/api/education")
+@RequestMapping("/api/educations")
+@CrossOrigin
 public class EducationController extends ValidationService {
 
 	private EducationService educationService;

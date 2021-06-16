@@ -8,9 +8,11 @@ import burakimdat.hrms.entities.concretes.JobAd;
 public interface JobAdService {
 	DataResult<JobAd> add(JobAd jobAd);
 
+	DataResult<JobAd> getById(int id);
+
 	DataResult<List<JobAd>> getByIsActive(boolean isActive);
 
-	DataResult<List<JobAd>> getAllSortedByDate();
+	DataResult<List<JobAd>> getAllSortedByDate(int sortType);
 
 	DataResult<List<JobAd>> getByIsActiveAndCompanyNameContains(boolean isActive, String companyName);
 

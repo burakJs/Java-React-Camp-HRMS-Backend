@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import burakimdat.hrms.business.abstracts.JobAdService;
 import burakimdat.hrms.core.utilities.results.DataResult;
+import burakimdat.hrms.core.utilities.results.ErrorDataResult;
 import burakimdat.hrms.core.utilities.results.SuccessDataResult;
 import burakimdat.hrms.dataAccess.abstracts.JobAdDao;
 import burakimdat.hrms.entities.concretes.JobAd;
@@ -26,7 +27,13 @@ public class JobAdManager implements JobAdService {
 
 	@Override
 	public DataResult<JobAd> add(JobAd jobAd) {
+		jobAd.setActive(false);
 		return new SuccessDataResult<JobAd>(this.JobAdDao.save(jobAd), "Başarıyla Eklendi...");
+	}
+
+	@Override
+	public DataResult<JobAd> getById(int id) {
+		return new SuccessDataResult<JobAd>(this.JobAdDao.getById(id));
 	}
 
 	@Override
@@ -36,8 +43,17 @@ public class JobAdManager implements JobAdService {
 	}
 
 	@Override
-	public DataResult<List<JobAd>> getAllSortedByDate() {
-		Sort sort = Sort.by(Direction.DESC, "lastDate");
+	public DataResult<List<JobAd>> getAllSortedByDate(int sortType) {
+		// 0 girilirse en yeniden eskiye
+		Direction direction;
+		if (sortType == 0) {
+			direction = Direction.DESC;
+		} else if (sortType == 1) {
+			direction = Direction.ASC;
+		} else {
+			return new ErrorDataResult<List<JobAd>>(null, "Doğru bir sıralama seçiniz!!!");
+		}
+		Sort sort = Sort.by(direction, "createdDate");
 		return new SuccessDataResult<List<JobAd>>(this.JobAdDao.findAll(sort),
 				"Tarih sırasına göre başarıyla getirildi...");
 	}

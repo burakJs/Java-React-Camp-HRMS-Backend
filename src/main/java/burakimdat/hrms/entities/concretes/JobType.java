@@ -6,9 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,20 +13,17 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "job_positions")
+@Table(name = "job_types")
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobPosition {
+public class JobType {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "job_pos_id")
+	@Column(name = "id")
 	private int id;
 
-	@NotNull
-	@NotBlank
-	@Size(max = 255, message = "Gireceğiniz değer 255 karakterden az olmalı")
-	@Column(name = "name", nullable = false)
-	private String jobPositionName;
+	@Column(name = "job_type_name")
+	private String jobTypeName;
 
 }

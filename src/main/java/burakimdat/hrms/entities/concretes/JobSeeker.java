@@ -1,6 +1,6 @@
 package burakimdat.hrms.entities.concretes;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -52,7 +52,7 @@ public class JobSeeker {
 
 	@NotNull
 	@Column(name = "birthday")
-	private Date birthday;
+	private LocalDate birthday;
 
 	@Column(name = "email_verify")
 	private boolean emailVerify = false;

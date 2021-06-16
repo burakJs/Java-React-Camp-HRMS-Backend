@@ -1,6 +1,6 @@
 package burakimdat.hrms.entities.concretes;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -59,12 +59,23 @@ public class JobAd {
 	private int salaryMax;
 
 	@Column(name = "job_ad_active")
-	private boolean isActive;
+	private boolean isActive = false;
 
-	@Column(name = "job_ad_last_date")
-	private Date lastDate;
+	@Column(name = "job_ad_created_date", columnDefinition = "DATETIME")
+	private LocalDate createdDate;
+
+	@Column(name = "job_ad_last_date", columnDefinition = "DATETIME")
+	private LocalDate lastDate;
 
 	@Column(name = "hrms_verify")
 	@JsonIgnore
 	private boolean hrmsVerify = false;
+
+	@ManyToOne
+	@JoinColumn(name = "job_type_id")
+	private JobType jobType;
+
+	@ManyToOne
+	@JoinColumn(name = "job_working_time_id")
+	private JobWorkingTime jobWorkingTime;
 }

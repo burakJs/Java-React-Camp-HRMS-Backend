@@ -1,6 +1,6 @@
 package burakimdat.hrms.entities.concretes;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,10 +46,10 @@ public class Education {
 	private String departmentName;
 
 	@Column(name = "entry_date")
-	private Date entryDate;
+	private LocalDate entryDate;
 
 	@Column(name = "graduation_date")
-	private Date graduationDate;
+	private LocalDate graduationDate;
 
 	@Column(name = "portfolio_id")
 	private int portfolioId;

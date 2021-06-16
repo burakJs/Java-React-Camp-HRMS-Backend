@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import burakimdat.hrms.entities.concretes.JobAd;
 
 public interface JobAdDao extends JpaRepository<JobAd, Integer> {
+
+	JobAd getById(int id);
+
 	List<JobAd> getByIsActive(boolean isActive);
 
 	List<JobAd> getByIsActiveAndCompanyNameContains(boolean isActive, String companyName);
@@ -29,4 +32,5 @@ public interface JobAdDao extends JpaRepository<JobAd, Integer> {
 	List<JobAd> findBySalaryMinGreaterThanEqual(int minSalary);
 
 	List<JobAd> findBySalaryMinGreaterThanEqualAndSalaryMaxLessThanEqual(int minSalary, int maxSalary);
+
 }

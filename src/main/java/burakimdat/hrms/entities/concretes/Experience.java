@@ -1,6 +1,6 @@
 package burakimdat.hrms.entities.concretes;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,11 +45,11 @@ public class Experience {
 
 	@NotNull
 	@Column(name = "entry_date")
-	private Date entryDate;
+	private LocalDate entryDate;
 
 	@NotNull
 	@Column(name = "quit_date")
-	private Date quitDate;
+	private LocalDate quitDate;
 
 	@Column(name = "portfolio_id")
 	private int portfolioId;

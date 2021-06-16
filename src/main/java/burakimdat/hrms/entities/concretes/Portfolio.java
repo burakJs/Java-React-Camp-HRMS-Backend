@@ -54,7 +54,7 @@ public class Portfolio {
 	private String intro;
 
 	@Column(name = "job_seeker_id")
-	private String jobSeekerId;
+	private int jobSeekerId;
 
 	@ManyToOne
 	@JoinColumn(name = "job_seeker_id", insertable = false, updatable = false)

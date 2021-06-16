@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import burakimdat.hrms.entities.concretes.JobAd;
 
 @RestController
 @RequestMapping("/api/jobAds")
+@CrossOrigin
 public class JobAdController extends ValidationService {
 
 	private JobAdService jobAdService;
@@ -35,14 +37,19 @@ public class JobAdController extends ValidationService {
 		return ResponseEntity.ok(this.jobAdService.add(jobAd));
 	}
 
+	@GetMapping("/getById")
+	public DataResult<JobAd> getById(@RequestParam int id) {
+		return this.jobAdService.getById(id);
+	}
+
 	@GetMapping("/getByIsActive")
 	public DataResult<List<JobAd>> getByIsActive() {
 		return this.jobAdService.getByIsActive(true);
 	}
 
 	@GetMapping("/getAllSortedByDate")
-	public DataResult<List<JobAd>> getAllSortedByDate() {
-		return this.jobAdService.getAllSortedByDate();
+	public DataResult<List<JobAd>> getAllSortedByDate(@RequestParam int sortType) {
+		return this.jobAdService.getAllSortedByDate(sortType);
 	}
 
 	@GetMapping("/getByIsActiveAndCompanyName")
