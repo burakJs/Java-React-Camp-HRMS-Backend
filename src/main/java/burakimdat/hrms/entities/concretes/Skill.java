@@ -44,4 +44,5 @@ public class Skill {
 	@JoinColumn(name = "portfolio_id", insertable = false, updatable = false)
 	@JsonIgnore
 	private Portfolio portfolio;
+
 }

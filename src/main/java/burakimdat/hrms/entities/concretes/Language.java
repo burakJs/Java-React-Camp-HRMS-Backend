@@ -47,4 +47,5 @@ public class Language {
 	@JoinColumn(name = "portfolio_id", insertable = false, updatable = false)
 	@JsonIgnore
 	private Portfolio portfolio;
+
 }

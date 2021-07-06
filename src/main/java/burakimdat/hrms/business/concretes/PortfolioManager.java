@@ -40,6 +40,18 @@ public class PortfolioManager implements PortfolioService {
 	}
 
 	@Override
+	public DataResult<Portfolio> update(Portfolio portfolio) {
+		Portfolio portfo = this.portfolioDao.findById(portfolio.getId()).get();
+		portfo.setEducations(portfolio.getEducations());
+		portfo.setExperiences(portfolio.getExperiences());
+		portfo.setIntro(portfolio.getIntro());
+		portfo.setLanguages(portfolio.getLanguages());
+		portfo.setSkills(portfolio.getSkills());
+		this.portfolioDao.save(portfo);
+		return new SuccessDataResult<Portfolio>(portfo, "Başarıyla güncellendi");
+	}
+
+	@Override
 	public DataResult<?> setImage(MultipartFile file, int id) {
 		Map<?, ?> response = this.cloudinaryService.imageUpload(file);
 		Portfolio portfolio = this.portfolioDao.getOne(id);

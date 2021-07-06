@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,11 +25,13 @@ public class JobWorkingTimeController {
 		this.JobWorkingTimeService = JobWorkingTimeService;
 	}
 
+	@GetMapping("/getAll")
 	DataResult<List<JobWorkingTime>> getAll() {
 		return this.JobWorkingTimeService.getAll();
 	}
 
-	DataResult<JobWorkingTime> add(JobWorkingTime jobWorkingTime) {
+	@GetMapping("/add")
+	DataResult<JobWorkingTime> add(@RequestBody JobWorkingTime jobWorkingTime) {
 		return this.JobWorkingTimeService.add(jobWorkingTime);
 	}
 }

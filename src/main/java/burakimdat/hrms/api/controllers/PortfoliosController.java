@@ -42,6 +42,11 @@ public class PortfoliosController extends ValidationService {
 		return ResponseEntity.ok(this.portfolioService.add(portfolio));
 	}
 
+	@PostMapping("/update")
+	ResponseEntity<?> update(@Valid @RequestBody Portfolio portfolio) {
+		return ResponseEntity.ok(this.portfolioService.update(portfolio));
+	}
+
 	@PostMapping("/setImage")
 	DataResult<?> add(@RequestBody MultipartFile file, int id) {
 		return this.portfolioService.setImage(file, id);

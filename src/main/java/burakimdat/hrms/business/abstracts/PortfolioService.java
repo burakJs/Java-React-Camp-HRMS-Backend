@@ -12,5 +12,7 @@ public interface PortfolioService {
 
 	DataResult<Portfolio> add(Portfolio portfolio);
 
+	DataResult<Portfolio> update(Portfolio portfolio);
+
 	DataResult<?> setImage(MultipartFile file, int id);
 }

@@ -59,4 +59,5 @@ public class JobSeeker {
 
 	@OneToMany(mappedBy = "jobSeeker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Portfolio> portfolios;
+
 }
